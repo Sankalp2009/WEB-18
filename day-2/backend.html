@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Backend</title>
+        <style>
+          #container
+          {
+             display: flex;
+             background-color: teal;
+             justify-content: space-around;
+             font-size: 40px;
+             margin-bottom: 50px; 
+          }
+          a
+          {
+              color: white;
+              text-decoration: none;
+          }
+          a:hover
+          {
+              text-decoration: underline;
+              color: yellowgreen;
+          }
+
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div><a href="Frontend.html">frontend</a></div>
+            <div><a href="Backend.html">Backend</a></div>
+          </div> 
+          <form id="formtag">
+              <input id="name" type="text" placeholder="EnterName"/>
+              <input id="imgUrl" type="text" placeholder="imgURL"/>
+              <input id="Logo" type="text" placeholder="companyLogo"/>
+              <input id="role" type="text" placeholder="role"/>
+              <input type="submit"/>
+          </form>
+          <script>
+              document.querySelector("#formtag").addEventListener("submit",investor)
+        
+              var investorArr = JSON.parse(localStorage.getItem("investData"))||[];
+              function investor()
+              {
+                  event.preventDefault();
+                  var investobj = 
+                  {
+                      investorName:formtag.name.value,
+                      investorImg:formtag.imgUrl.value,
+                      investorLogo:formtag.Logo.value,
+                      investorRole:formtag.role.value,
+                  };
+                  investorArr.push(investobj);
+                    console.log( investorArr);
+                  localStorage.setItem("investData",JSON.stringify( investorArr));  
+              }
+          </script>
+    </body>
+</html>
